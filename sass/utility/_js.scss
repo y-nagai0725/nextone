@@ -1,0 +1,28 @@
+//各ファイルは必ず登録済みの変数を最初に読み込みます
+//as *で読み込みファイル名を省略することができます
+@use "../global" as *;
+
+.fade,
+.fadeUp,
+.fadeRight,
+.fadeLeft {
+  opacity: 0;
+  transition: 0.7s ease-out;
+}
+
+.fadeUp {
+  transform: translateY(30%);
+}
+
+.fadeRight {
+  transform: translateX(-30%);
+}
+
+.fadeLeft {
+  transform: translateX(30%);
+}
+
+.showElement {
+  opacity: 1;
+  transform: translate(0, 0);
+}

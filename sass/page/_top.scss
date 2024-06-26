@@ -1,0 +1,497 @@
+//各ファイルは必ず登録済みの変数を最初に読み込みます
+//as *で読み込みファイル名を省略することができます
+@use "../global" as *;
+
+#top {
+
+  .wrapper {
+    overflow: hidden;
+  }
+
+  .mv {
+    margin-bottom: 240px;
+    height: 100vh;
+    background-color: $blue;
+    position: relative;
+
+    &__container {
+      @include contents-width;
+      height: 100%;
+      position: relative;
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 1140px;
+      height: 72vh;
+      background: url(../images/mv.jpg) center center / cover;
+    }
+
+    &__box {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      padding: 80px;
+      width: 660px;
+      height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      background: $white;
+
+      & span {
+        &:nth-of-type(1) {
+          animation: slide 0.8s 0.4s linear forwards;
+        }
+
+        &:nth-of-type(2) {
+          animation: slide 0.8s 1.0s linear forwards;
+        }
+
+        &:nth-of-type(3) {
+          animation: slide 0.8s 1.6s linear forwards;
+        }
+
+        &:nth-of-type(4) {
+          animation: fade 0.8s 2.2s linear forwards;
+        }
+      }
+    }
+
+    &__catchcopy-en {
+      display: block;
+      width: 0;
+      color: $blue;
+      font-family: $open-sans;
+      font-size: 80px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &__catchcopy-ja {
+      display: block;
+      color: $blue;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      line-height: calc(80 / 40);
+      position: relative;
+      opacity: 0;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -18px;
+        left: 0;
+        width: 100px;
+        height: 9px;
+        background: $yellow;
+      }
+    }
+
+    &__scroll-txt {
+      position: absolute;
+      right: 56px;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      color: $white;
+      font-family: $open-sans;
+      font-size: 16px;
+      opacity: 0;
+      animation: fade 0.4s 3s ease-out forwards;
+
+      &::after {
+        content: "";
+        width: 1px;
+        height: 160px;
+        background: $white;
+        transform: scale(0);
+        animation: scroll 2.5s 3s ease infinite;
+      }
+    }
+  }
+
+  .about {
+    margin-bottom: 240px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc(100% - 320px);
+      height: calc(100% + 160px);
+      background: $blue;
+      z-index: -1;
+    }
+
+    &__container {
+      @include contents-width;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__box {
+      width: 610px;
+    }
+
+    &__ttl {
+      @include section-title($color: $white);
+    }
+
+    &__txt-area {
+      margin-bottom: 48px;
+    }
+
+    &__txt {
+      margin-bottom: 64px;
+      color: #fff;
+      font-size: 16px;
+      line-height: calc(32 / 16);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    &__btn {
+      width: 200px;
+      margin: 0 auto;
+    }
+
+    &__link {
+      @include btn-link($color: $white, $bg-color: $black);
+    }
+
+    &__bg {
+      width: 916px;
+      background: url(../images/about_bg.jpg) center center / cover;
+    }
+  }
+
+  .wss {
+    margin-bottom: 160px;
+    position: relative;
+
+    &__container {
+      @include contents-width(1280px);
+    }
+
+    &__ttl {
+      @include section-title($align: center);
+    }
+
+    &__ul {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    &__list {
+      list-style-type: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 80px;
+
+      &:nth-of-type(2n) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &__pic {
+      width: 560px;
+      height: 340px;
+
+      &.small {
+        height: 262px;
+      }
+    }
+
+    &__img {
+      @include img;
+    }
+
+    &__txt {
+      font-size: 16px;
+      line-height: calc(32 / 16);
+    }
+
+    &__box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    &__btn {
+      width: 200px;
+    }
+
+    &__link {
+      @include btn-link;
+    }
+  }
+
+  .bg {
+    margin-bottom: 160px;
+    height: 485px;
+    background: url(../images/bg.jpg) center center / cover;
+  }
+
+  .history {
+    margin-bottom: 160px;
+
+    &__container {
+      @include contents-width;
+    }
+
+    &__ttl {
+      @include section-title;
+    }
+
+    &__box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__table {
+      width: 615px;
+
+      &.showElement {
+        div {
+          opacity: 1;
+        }
+
+        div:nth-of-type(2) {
+          transition-delay: 0.3s;
+        }
+
+        div:nth-of-type(3) {
+          transition-delay: 0.6s;
+        }
+
+        div:nth-of-type(4) {
+          transition-delay: 0.9s;
+        }
+
+        div:nth-of-type(5) {
+          transition-delay: 1.2s;
+        }
+      }
+    }
+
+    &__table-box {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 1px solid $black;
+      position: relative;
+      opacity: 0;
+      transition: 0.7s ease-out;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 15%;
+        height: 1px;
+        background: $yellow;
+      }
+    }
+
+    &__table-year {
+      width: 15%;
+      padding: 32px 0;
+      color: $blue;
+      font-family: $open-sans;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: calc(32 / 16);
+    }
+
+    &__table-description {
+      width: 85%;
+      padding: 32px 0 32px 64px;
+      font-size: 16px;
+      line-height: calc(32 / 16);
+    }
+
+    &__txt-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      padding: 0 80px;
+      background: $blue;
+    }
+
+    &__txt {
+      color: $white;
+      font-size: 16px;
+      line-height: calc(32 / 16);
+    }
+  }
+
+  .profile {
+    margin-bottom: 160px;
+
+    &__container {
+      @include contents-width;
+    }
+
+    &__ttl {
+      @include section-title;
+    }
+
+    &__box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__name {
+      margin-bottom: 32px;
+      font-size: 24px;
+      line-height: calc(48 / 24);
+    }
+
+    &__info {
+      &.showElement {
+        div {
+          opacity: 1;
+        }
+
+        div:nth-of-type(2) {
+          transition-delay: 0.3s;
+        }
+
+        div:nth-of-type(3) {
+          transition-delay: 0.6s;
+        }
+
+        div:nth-of-type(4) {
+          transition-delay: 0.9s;
+        }
+
+        div:nth-of-type(5) {
+          transition-delay: 1.2s;
+        }
+
+        div:nth-of-type(6) {
+          transition-delay: 1.5s;
+        }
+      }
+    }
+
+    &__row {
+      opacity: 0;
+      transition: 0.7s ease-out;
+
+      &:last-of-type {
+        dd {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__heading {
+      margin-bottom: 16px;
+      color: $blue;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    &__description {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      padding-left: 24px;
+      font-size: 16px;
+      line-height: calc(32 / 16);
+
+      & .en {
+        display: block;
+        font-family: $open-sans;
+        line-height: 1;
+      }
+    }
+
+    &__sns-link {
+      display: block;
+      padding: 8px;
+      transition: .3s ease-out;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &__sns-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__btn {
+      width: 320px;
+    }
+
+    &__btn-link {
+      @include btn-link;
+    }
+
+    &__map-wrap {
+      width: 880px;
+
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .contact {
+    margin-bottom: 160px;
+
+    &__container {
+      @include contents-width(1280px);
+      padding: 80px 0;
+      background: $blue;
+    }
+
+    &__ttl {
+      @include section-title($color: $white, $align: center);
+    }
+
+    &__txt {
+      margin-bottom: 40px;
+      color: $white;
+      font-size: 16px;
+      line-height: calc(32 / 16);
+      text-align: center;
+    }
+
+    &__btn {
+      width: 200px;
+      margin: 0 auto;
+    }
+
+    &__btn-link {
+      @include btn-link($color: $white, $bg-color: $black);
+    }
+  }
+}

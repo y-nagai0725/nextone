@@ -1,0 +1,45 @@
+// settingフォルダの変数を読み込みます
+
+@use "../setting" as *;
+
+@keyframes scroll {
+  0% {
+    transform-origin: top;
+    transform: scale(0);
+  }
+
+  45% {
+    transform-origin: top;
+    transform: scale(1);
+  }
+
+  55% {
+    transform-origin: bottom;
+    transform: scale(1);
+  }
+
+  100% {
+    transform-origin: bottom;
+    transform: scale(0);
+  }
+}
+
+@keyframes slide {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
